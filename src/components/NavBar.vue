@@ -58,6 +58,11 @@ export default {
         url: '/notifications',
         icon: 'mdi-account',
       },
+      {
+        name: 'Dashboard',
+        url: '/dashboard',
+        icon: 'mdi-account',
+      },
     ],
   }),
 };

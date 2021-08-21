@@ -9,12 +9,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/Login.vue'),
   },
   {
     path: '/residents',
@@ -27,25 +27,30 @@ const routes = [
     component: () => import('../views/Notifications.vue')
   },
   {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('../views/Dashboard.vue'),
+  },
+  {
     path: '/:catchAll(.*)',
     name: '404',
-    component: () => import('../views/404.vue')
-  }
-]
+    component: () => import('../views/404.vue'),
+  },
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
 
 router.beforeEach((routeTo, routeFrom, next) => {
-  NProgress.start()
-  next()
-})
+  NProgress.start();
+  next();
+});
 
 router.afterEach(() => {
-  NProgress.done()
-})
+  NProgress.done();
+});
