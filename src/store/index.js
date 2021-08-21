@@ -1,11 +1,11 @@
-import { createStore } from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 import * as user from '@/store/modules/user.js'
 import * as notification from '@/store/modules/notification.js'
-import * as post from '@/store/modules/post.js'
-import * as comment from '@/store/modules/comment.js'
 
+Vue.use(Vuex)
 
-export default createStore({
+export default new Vuex.Store({
   state: {
   },
   mutations: {
@@ -14,8 +14,6 @@ export default createStore({
   },
   modules: {
     user,
-    notification,
-    post,
-    comment
+    notification
   }
 })
