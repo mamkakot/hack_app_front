@@ -1,17 +1,27 @@
 <template>
   <div>
-    <h1>{{ user }}</h1>
-    <AppealForm />
+    <v-container>
+      <v-row no-gutters style="height: 150px;">
+        <v-col cols="8">
+          <events-calendar />
+        </v-col>
+        <v-col cols="4">
+          <notification-container />
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 <script>
-import AppealForm from "@/components/AppealForm.vue";
+import EventsCalendar from '@/components/EventsCalendar'
+import NotificationContainer from '@/components/NotificationContainer'
 import { mapState } from "vuex";
 
 export default {
   components: {
-    AppealForm
+    EventsCalendar,
+    NotificationContainer
   },
   computed: mapState("user", ["user"]),
 };
