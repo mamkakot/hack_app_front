@@ -4,13 +4,13 @@
     v-for="resident in residents"
     :key="resident.id"
     :resident="resident"
-    @updateresidents="fetchresidents"
+    @updateresidents="fetchResidents"
     />
   </div>
 </template>
 
 <script>
-import ResidentCard from '@/components/resident.vue'
+import ResidentCard from '@/components/ResidentCard.vue'
 import EventService from '@/services/EventService.js'
 
 export default {
