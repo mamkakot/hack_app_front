@@ -1,13 +1,13 @@
 <template>
   <v-card class="mx-auto mt-5" width="520">
     <v-card-text>
-      <v-text-field label="Тема" outlined dense required> </v-text-field>
       <v-textarea
         solo
-        label="Текст обращения"
-        hint="Введите текст обращения"
+        label="Ответ"
+        hint="Ответ"
         outlined
         required
+        v-model="notification.descriptions"
       ></v-textarea>
       <v-row align="center">
         <v-col>
@@ -16,10 +16,7 @@
 
         <v-spacer></v-spacer>
         <v-col>
-          <v-btn color="success" @click="snackbar = true">Отправить</v-btn>
-        </v-col>
-        <v-col>
-          <v-btn color="error" @click="dialog = false">Отмена</v-btn>
+          <v-btn color="success" @click="sendAppeal">Отправить</v-btn>
         </v-col>
       </v-row>
       <v-snackbar v-model="snackbar" absolute>
@@ -36,16 +33,36 @@
 </template>
 
 <script>
+import EventService from "@/services/EventService";
+
 export default {
+  props: {
+  },
   data: () => ({
     filled: false,
     snackbar: false,
-    text: `Отправлено`
+    text: `Отправлено`,
+    notification: {
+      title: "",
+      description: "",
+      receiver: 1,
+      sender: 0,
+    },
   }),
   methods: {
-    sendAppeal(msg) {
-      console.log(msg);
+    sendAppeal() {
+      this.snackbar = true;
+      this.notification.receiver = this.resident.id;
+      EventService.createNotification(this.notification)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log("There was an error: ", error.response);
+        });
     },
+  },
+  created() {
   },
 };
 </script>

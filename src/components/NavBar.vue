@@ -47,6 +47,7 @@ export default {
         url: '/',
         icon: 'mdi-home',
       },
+
       {
         name: 'Бизнесы',
         url: '/residents',
