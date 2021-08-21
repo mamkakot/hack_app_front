@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import EventService from "@/services/EventService";
+import { mapActions } from "vuex";
 
 export default {
   name: "LoginPage",
@@ -48,22 +48,12 @@ export default {
   }),
   methods: {
     onLoginClick() {
-      EventService.logIn(this.login)
-        .then((response) => {
-          this.logIn(response.data);
-          EventService.getUser(response.data)
-            .then((resp) => {
-              console.log(resp.data);
-              this.getData(resp.data);
-            })
-            .catch((error) => {
-              console.log("There was an error: ", error);
-            });
-        })
-        .catch((error) => {
-          console.log("There was an error: ", error);
-        });
+      this.logIn(this.login)
+      .then( () => {
+        this.$router.push({ name: 'Home' })
+      })
     },
+    ...mapActions("user", ["logIn"])
   },
 };
 </script>
