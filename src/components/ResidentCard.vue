@@ -7,8 +7,8 @@
         </v-card-title>
 
         <v-card-text>
-          <div>Помещение: {{ resident.name }}</div>
-          <div>Тип: {{ resident.name }}</div>
+          <div>Почта: {{ resident.email }}</div>
+          <div>Телефон: {{ resident.phone }}</div>
         </v-card-text>
       </v-card>
     </template>

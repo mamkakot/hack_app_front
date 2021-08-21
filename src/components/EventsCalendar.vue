@@ -98,7 +98,6 @@ export default {
             this.events[i].timed = true;
             this.events[i].start = new Date(this.events[i].start * 1000)
             this.events[i].end = new Date(this.events[i].end * 1000)
-            console.log(this.events[i])
           }
         })
         .catch((error) => {

@@ -52,7 +52,7 @@ export default {
   methods: {
     sendAppeal() {
       this.snackbar = true;
-      this.notification.receiver = this.resident.id;
+      this.notification.receiver
       EventService.createNotification(this.notification)
         .then((response) => {
           console.log(response.data);
