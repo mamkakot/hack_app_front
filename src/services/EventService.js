@@ -14,8 +14,8 @@ export default {
   signUp(name, email, password, status) {
     return apiClient.post('/api/signup', name, email, password, status)
   },
-  logIn(username, password) {
-    return apiClient.post('/login', username, password)
+  logIn(credentials) {
+    return apiClient.post('/login', credentials)
   },
   logOut() {
     return apiClient.get('/logout')
