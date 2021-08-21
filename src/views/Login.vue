@@ -35,25 +35,24 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 
 export default {
-  name: "LoginPage",
+  name: 'LoginPage',
   data: () => ({
     showPassword: false,
     login: {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
     },
   }),
   methods: {
     onLoginClick() {
-      this.logIn(this.login)
-      .then( () => {
-        this.$router.push({ name: 'Home' })
-      })
+      this.logIn(this.login).then(() => {
+        this.$router.push({ name: 'Home' });
+      });
     },
-    ...mapActions("user", ["logIn"])
+    ...mapActions('user', ['logIn']),
   },
 };
 </script>
