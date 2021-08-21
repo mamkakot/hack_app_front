@@ -16,7 +16,7 @@ export const mutations = {
     }`
   },
   LOG_OUT(state) {
-    state.token = null
+    state.user = null
   }
 }
 
