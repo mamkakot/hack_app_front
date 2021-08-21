@@ -2,15 +2,18 @@
   <v-main>
     <v-container>
       <v-row>
-        <v-col cols="5">
-          <v-row v-for="workplace in workplaces" :key="workplace.id"
-            ><v-col><Workplace :workplace="workplace"/></v-col>
-          </v-row>
-          <v-spacer></v-spacer>
-        </v-col>
+        <template v-for="(workplace, index) in workplaces">
+          <v-col :key="index" cols="6">
+            <Workplace :workplace="workplace" />
+          </v-col>
+          <v-spacer :key="index"></v-spacer>
+          <v-responsive
+            v-if="index % 2 !== 0"
+            :key="`width-${index}`"
+            width="100%"
+          ></v-responsive>
+        </template>
       </v-row>
-
-      <v-spacer></v-spacer>
     </v-container>
   </v-main>
 </template>
@@ -36,28 +39,28 @@ export default {
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
-          id: 3,
+          id: 12,
           name: 'Cringe Place 3',
           image: 'wp3.jpg',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
-          id: 3,
+          id: 4,
           name: 'Cringe Place 4',
           image: 'wp4.jpg',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
-          id: 3,
+          id: 5,
           name: 'Cringe Place 5',
           image: 'wp5.jpg',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
-          id: 3,
+          id: 6,
           name: 'Cringe Place 6',
           image: 'wp6.jpg',
           shortDescription:
