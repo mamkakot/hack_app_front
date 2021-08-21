@@ -1,0 +1,742 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.3
+-- Dumped by pg_dump version 13.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: business_types; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.business_types (
+    id bigint NOT NULL,
+    name character varying(64) NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.business_types OWNER TO hack;
+
+--
+-- Name: business_types_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.business_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.business_types_id_seq OWNER TO hack;
+
+--
+-- Name: business_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.business_types_id_seq OWNED BY public.business_types.id;
+
+
+--
+-- Name: checks; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.checks (
+    id bigint NOT NULL,
+    name character varying(128) NOT NULL,
+    payment integer NOT NULL,
+    sender bigint NOT NULL,
+    receiver bigint NOT NULL,
+    payed boolean NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.checks OWNER TO hack;
+
+--
+-- Name: checks_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.checks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.checks_id_seq OWNER TO hack;
+
+--
+-- Name: checks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.checks_id_seq OWNED BY public.checks.id;
+
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.comments (
+    id bigint NOT NULL,
+    "user" bigint NOT NULL,
+    username character varying(64) NOT NULL,
+    body text NOT NULL,
+    post bigint NOT NULL,
+    rating integer NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.comments OWNER TO hack;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.comments_id_seq OWNER TO hack;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
+
+
+--
+-- Name: docs; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.docs (
+    id bigint NOT NULL,
+    name character varying(128) NOT NULL,
+    path character varying(256) NOT NULL,
+    sender bigint NOT NULL,
+    receiver bigint NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.docs OWNER TO hack;
+
+--
+-- Name: docs_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.docs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.docs_id_seq OWNER TO hack;
+
+--
+-- Name: docs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.docs_id_seq OWNED BY public.docs.id;
+
+
+--
+-- Name: events; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.events (
+    id bigint NOT NULL,
+    title character varying(64) NOT NULL,
+    description text NOT NULL,
+    type character varying(64) NOT NULL,
+    start timestamp without time zone NOT NULL,
+    "end" timestamp without time zone NOT NULL,
+    visitors integer,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.events OWNER TO hack;
+
+--
+-- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.events_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.events_id_seq OWNER TO hack;
+
+--
+-- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
+
+
+--
+-- Name: get_column_real_type; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.get_column_real_type (
+    test boolean
+);
+
+
+ALTER TABLE public.get_column_real_type OWNER TO hack;
+
+--
+-- Name: notifications; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.notifications (
+    id bigint NOT NULL,
+    sender bigint NOT NULL,
+    receiver bigint NOT NULL,
+    title character varying(64) NOT NULL,
+    description text NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.notifications OWNER TO hack;
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.notifications_id_seq OWNER TO hack;
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.notifications_id_seq OWNED BY public.notifications.id;
+
+
+--
+-- Name: personal; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.personal (
+    id bigint NOT NULL,
+    name character varying(64) NOT NULL,
+    email character varying(128) NOT NULL,
+    phone character varying(16) NOT NULL,
+    users bigint NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.personal OWNER TO hack;
+
+--
+-- Name: personal_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.personal_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.personal_id_seq OWNER TO hack;
+
+--
+-- Name: personal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.personal_id_seq OWNED BY public.personal.id;
+
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.posts (
+    id bigint NOT NULL,
+    body text NOT NULL,
+    attachments character varying(128),
+    "user" bigint NOT NULL,
+    rating integer NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.posts OWNER TO hack;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.posts_id_seq OWNER TO hack;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
+
+
+--
+-- Name: rooms; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.rooms (
+    id bigint NOT NULL,
+    place character varying(64) NOT NULL,
+    type integer NOT NULL,
+    owner bigint NOT NULL,
+    renter bigint NOT NULL,
+    payment integer NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.rooms OWNER TO hack;
+
+--
+-- Name: rooms_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.rooms_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.rooms_id_seq OWNER TO hack;
+
+--
+-- Name: rooms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.rooms_id_seq OWNED BY public.rooms.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: hack
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    name character varying(64) NOT NULL,
+    pass character varying(128) NOT NULL,
+    email character varying(128) NOT NULL,
+    phone character varying(16) NOT NULL,
+    business_type bigint NOT NULL,
+    income integer NOT NULL,
+    role integer NOT NULL,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone
+);
+
+
+ALTER TABLE public.users OWNER TO hack;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: hack
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO hack;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: business_types id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.business_types ALTER COLUMN id SET DEFAULT nextval('public.business_types_id_seq'::regclass);
+
+
+--
+-- Name: checks id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.checks ALTER COLUMN id SET DEFAULT nextval('public.checks_id_seq'::regclass);
+
+
+--
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+
+
+--
+-- Name: docs id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.docs ALTER COLUMN id SET DEFAULT nextval('public.docs_id_seq'::regclass);
+
+
+--
+-- Name: events id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
+
+
+--
+-- Name: notifications id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.notifications ALTER COLUMN id SET DEFAULT nextval('public.notifications_id_seq'::regclass);
+
+
+--
+-- Name: personal id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.personal ALTER COLUMN id SET DEFAULT nextval('public.personal_id_seq'::regclass);
+
+
+--
+-- Name: posts id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_id_seq'::regclass);
+
+
+--
+-- Name: rooms id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.rooms ALTER COLUMN id SET DEFAULT nextval('public.rooms_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: business_types; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.business_types (id, name, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: checks; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.checks (id, name, payment, sender, receiver, payed, created_at, updated_at) FROM stdin;
+1	adfasdf	1233	0	1	f	2021-08-21 18:50:58.119406+07	2021-08-21 18:50:58.119408+07
+3	money	1233	0	1	f	2021-08-21 18:51:36.032232+07	2021-08-21 18:51:36.032233+07
+4	money	1233	0	1	f	2021-08-21 18:51:56.867506+07	2021-08-21 18:51:56.867507+07
+2	erwe	1233	0	1	t	2021-08-21 18:51:05.828143+07	2021-08-21 18:51:05.828144+07
+\.
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.comments (id, "user", username, body, post, rating, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: docs; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.docs (id, name, path, sender, receiver, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.events (id, title, description, type, start, "end", visitors, created_at, updated_at) FROM stdin;
+1	mdlk	test2	it	2021-08-14 00:00:00	2021-08-15 00:00:00	0	2021-08-21 18:04:53.235602+07	2021-08-21 18:04:53.235605+07
+2	mdlk	test2	it	2021-08-15 00:00:00	2021-08-15 00:00:00	0	2021-08-21 18:05:03.832931+07	2021-08-21 18:05:03.832933+07
+3	mdlk	test2	it	2021-08-10 00:00:00	2021-08-10 00:00:00	0	2021-08-21 18:05:11.66523+07	2021-08-21 18:05:11.665232+07
+4	mdlk	test2	it	2021-08-10 00:00:00	2021-08-12 00:00:00	0	2021-08-21 18:05:15.877029+07	2021-08-21 18:05:15.877032+07
+5	12	12	12	2021-08-26 00:00:00	2021-08-26 00:00:00	0	2021-08-21 18:27:59.329769+07	2021-08-21 18:27:59.329771+07
+\.
+
+
+--
+-- Data for Name: get_column_real_type; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.get_column_real_type (test) FROM stdin;
+\.
+
+
+--
+-- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.notifications (id, sender, receiver, title, description, created_at, updated_at) FROM stdin;
+1	1	0	ЖКХ	30 августа	2021-08-21 19:14:36.997928+07	2021-08-21 19:14:36.997929+07
+2	0	1			2021-08-21 22:40:56.375423+07	2021-08-21 22:40:56.375425+07
+\.
+
+
+--
+-- Data for Name: personal; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.personal (id, name, email, phone, users, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.posts (id, body, attachments, "user", rating, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: rooms; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.rooms (id, place, type, owner, renter, payment, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: hack
+--
+
+COPY public.users (id, name, pass, email, phone, business_type, income, role, created_at, updated_at) FROM stdin;
+1	test	PBKDF2$SHA256:20000$383d1e97f705b3d5cef19976d4687660$5b07bc5e21b0c79caad4ed07240599b8f0bdacf7c1d639e8a0e8139dcace40b2	test	88005553535	0	0	1	2021-08-21 18:50:23.619787+07	2021-08-21 18:50:23.622035+07
+\.
+
+
+--
+-- Name: business_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.business_types_id_seq', 1, false);
+
+
+--
+-- Name: checks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.checks_id_seq', 4, true);
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.comments_id_seq', 1, false);
+
+
+--
+-- Name: docs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.docs_id_seq', 1, false);
+
+
+--
+-- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.events_id_seq', 5, true);
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.notifications_id_seq', 2, true);
+
+
+--
+-- Name: personal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.personal_id_seq', 1, false);
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.posts_id_seq', 1, false);
+
+
+--
+-- Name: rooms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.rooms_id_seq', 1, false);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+
+
+--
+-- Name: business_types business_types_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.business_types
+    ADD CONSTRAINT business_types_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: checks checks_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.checks
+    ADD CONSTRAINT checks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: docs docs_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.docs
+    ADD CONSTRAINT docs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.events
+    ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.notifications
+    ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: personal personal_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.personal
+    ADD CONSTRAINT personal_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rooms rooms_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.rooms
+    ADD CONSTRAINT rooms_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: hack
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
