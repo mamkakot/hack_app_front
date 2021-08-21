@@ -26,42 +26,42 @@ export default {
       workplaces: [
         {
           id: 1,
-          name: 'Cringe Place 1',
+          name: 'Площадка 1',
           image: 'wp1.webp',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
           id: 2,
-          name: 'Cringe Place 2',
+          name: 'Площадка 2',
           image: 'wp2.jpg',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
           id: 12,
-          name: 'Cringe Place 3',
+          name: 'Площадка 3',
           image: 'wp3.jpg',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
           id: 4,
-          name: 'Cringe Place 4',
+          name: 'Площадка 4',
           image: 'wp4.jpg',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
           id: 5,
-          name: 'Cringe Place 5',
+          name: 'Площадка 5',
           image: 'wp5.jpg',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
         },
         {
           id: 6,
-          name: 'Cringe Place 6',
+          name: 'Площадка 6',
           image: 'wp6.jpg',
           shortDescription:
             'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
