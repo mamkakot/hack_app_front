@@ -55,8 +55,8 @@ export default {
       },
 
       {
-        name: 'AppealForm',
-        url: '/appeal',
+        name: 'Dashboard',
+        url: '/dashboard',
         icon: 'mdi-account',
       },
     ],
