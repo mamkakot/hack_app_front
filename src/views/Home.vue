@@ -23,6 +23,6 @@ export default {
     EventsCalendar,
     NotificationContainer
   },
-  computed: mapState("user", ["user"]),
+  computed: mapState('user', ['user']),
 };
 </script>

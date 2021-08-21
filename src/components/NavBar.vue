@@ -23,6 +23,7 @@
             @click="drawer = false"
             v-for="view in views"
             :key="view.name"
+            :to="view.url"
           >
             <v-list-item-icon>
               <v-icon>{{ view.icon }}</v-icon>
@@ -49,7 +50,7 @@ export default {
 
       {
         name: 'Pahome',
-        url: '/',
+        url: '/login',
         icon: 'mdi-account'
       }
     ]

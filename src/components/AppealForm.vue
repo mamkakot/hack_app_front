@@ -1,32 +1,62 @@
 <template>
-    <v-main>
-        <v-container>
-          <v-card>
-            <v-card-title>
-              Title
-            </v-card-title>
+  <v-card class="mx-auto mt-5" width="520">
+    <v-card-text>
+      <v-select
+        :items="users"
+        v-model="value"
+        label="Кому"
+        outlined
+        dense
+        required
+      ></v-select>
+      <v-text-field label="Тема" outlined dense required> </v-text-field>
+      <v-textarea
+        solo
+        label="Текст обращения"
+        hint="Введите текст обращения"
+        outlined
+        required
+      ></v-textarea>
+      <v-row align="center">
+        <v-col>
+          <v-file-input counter multiple show-size></v-file-input>
+        </v-col>
 
-            <v-textarea
-              solo
-              label='Введите текст обращения, например: "Плати деньги, собака"'
-              hint="Введите текст обращения"></v-textarea>
+        <v-spacer></v-spacer>
+        <v-col>
+          <v-btn color="success" @click="snackbar = true">Отправить</v-btn>
+        </v-col>
+        <v-col>
+          <v-btn color="error">Отмена</v-btn>
+        </v-col>
+      </v-row>
+      <v-snackbar v-model="snackbar" absolute>
+        {{ text }}
 
-            <v-file-input
-              counter
-              multiple
-              show-size
-            ></v-file-input>
-          </v-card>
-        </v-container>
-    </v-main>
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {
+  data: () => ({
+    filled: false,
+    snackbar: false,
+    text: `Отправлено`,
+    users: ['sas', 'ses', 'sos'],
+  }),
+  methods: {
+    sendAppeal(msg) {
+      console.log(msg);
+    },
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
