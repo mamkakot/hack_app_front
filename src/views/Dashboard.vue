@@ -1,22 +1,128 @@
 <template>
-  <div>
-    <apexcharts
-      width="700"
-      height="350"
-      type="area"
-      :options="chartOptions"
-      :series="series"
-    >
-    </apexcharts>
+  <v-container>
+    <v-row>
+      <v-col>
+        <!-- DatePicker element -->
+        <v-menu
+          ref="menu"
+          v-model="menu"
+          :close-on-content-click="false"
+          :return-value.sync="dates"
+          transition="scale-transition"
+          offset-y
+          min-width="auto"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-text-field
+              v-model="dateRangeText"
+              label="Choose dates"
+              prepend-icon="mdi-calendar"
+              readonly
+              v-bind="attrs"
+              v-on="on"
+            ></v-text-field>
+          </template>
+          <v-date-picker v-model="dates" no-title scrollable range>
+            <v-spacer></v-spacer>
+            <v-btn text color="primary" @click="menu = false">
+              Отмена
+            </v-btn>
+            <v-btn
+              text
+              color="primary"
+              @click="
+                updateCharts();
+                $refs.menu.save(dates);
+              "
+            >
+              OK
+            </v-btn>
+          </v-date-picker>
+        </v-menu>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <apexcharts
+          ref="chart"
+          type="line"
+          :options="chartOptions"
+          :series="series"
+        >
+        </apexcharts>
+      </v-col>
 
-    <apexcharts
-      width="700"
-      type="radar"
-      :options="chartOptions"
-      :series="series"
-    >
-    </apexcharts>
-  </div>
+      <v-col>
+        <apexcharts
+          ref="chart2"
+          type="bar"
+          :options="chartOptions"
+          :series="series"
+        >
+        </apexcharts>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <apexcharts
+          ref="chart3"
+          type="area"
+          :options="chartOptions"
+          :series="series"
+        >
+        </apexcharts>
+      </v-col>
+      <v-col>
+        <apexcharts
+          ref="chart4"
+          type="line"
+          :options="chartOptions"
+          :series="series"
+        >
+        </apexcharts>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <apexcharts
+          ref="chart5"
+          type="radar"
+          :options="chartOptions"
+          :series="series"
+        >
+        </apexcharts>
+      </v-col>
+      <v-col>
+        <apexcharts
+          ref="chart6"
+          type="scatter"
+          :options="chartOptions"
+          :series="series"
+        >
+        </apexcharts>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <apexcharts
+          ref="chart7"
+          type="bubble"
+          :options="chartOptions"
+          :series="series"
+        >
+        </apexcharts>
+      </v-col>
+      <v-col>
+        <apexcharts
+          ref="chart8"
+          type="line"
+          :options="chartOptions"
+          :series="series"
+        >
+        </apexcharts>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -29,48 +135,124 @@ export default {
   },
   data: function() {
     return {
+      dates: [],
+      values: [],
+      menu: false,
       chartOptions: {
         chart: {
           id: 'basic-bar',
+          redrawOnParentResize: true,
           sparkline: {
             enabled: false,
-          },
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-        },
-        plotOptions: {
-          area: {
-            fillTo: 'end',
           },
         },
         dataLabels: {
           enabled: false,
         },
-        stroke: {
-          show: false,
-        },
-        colors: ['#E63946', '#457b9d'],
+        colors: ['#e76f51', '#2a9d8f', '#264653'],
         fill: {
-          opacity: 0.8,
+          opacity: 1,
           type: 'solid',
-          pattern: {
-            style: 'verticalLines',
-            width: 17,
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 5,
+            columnWidth: '80%',
+            barHeight: '70%',
+            distributed: false,
+            rangeBarOverlap: true,
+            rangeBarGroupRows: false,
+            dataLabels: {
+              position: 'top',
+              maxItems: 100,
+              hideOverflowingLabels: true,
+            },
           },
         },
       },
       series: [
         {
-          name: 'series-1',
-          data: [30, 40, 45, 50, 49, 60, 70, 91],
-        },
-        {
-          name: 'Radar Series 2',
-          data: [26, 21, 65, 36, 87, 15, 60, 70],
+          name: 'Посещаемость',
+          data: [],
         },
       ],
     };
+  },
+  computed: {
+    dateRangeText() {
+      return this.dates.join(' ~ ');
+    },
+  },
+  methods: {
+    updateCharts() {
+      this.$refs.chart.updateSeries([
+        { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
+      ]);
+      this.$refs.chart2.updateSeries([
+        { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
+      ]);
+      this.$refs.chart3.updateSeries([
+        { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
+      ]);
+      this.$refs.chart4.updateSeries([
+        {
+          type: 'line',
+          data: this.getRandomNumbersArray(this.daysBetweenDates()),
+        },
+        {
+          type: 'bar',
+          data: this.getRandomNumbersArray(this.daysBetweenDates()),
+        },
+      ]);
+      this.$refs.chart5.updateSeries([
+        { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
+      ]);
+      this.$refs.chart6.updateSeries([
+        { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
+      ]);
+      this.$refs.chart7.updateSeries([
+        {
+          data: [
+            this.getRandomNumbersArray(this.daysBetweenDates()),
+            this.getRandomNumbersArray(this.daysBetweenDates()),
+            this.getRandomNumbersArray(this.daysBetweenDates()),
+            this.getRandomNumbersArray(this.daysBetweenDates()),
+            this.getRandomNumbersArray(this.daysBetweenDates()),
+            this.getRandomNumbersArray(this.daysBetweenDates()),
+          ],
+        },
+      ]);
+      this.$refs.chart8.updateSeries([
+        {
+          type: 'line',
+          data: this.getRandomNumbersArray(this.daysBetweenDates()),
+        },
+        {
+          type: 'bar',
+          data: this.getRandomNumbersArray(this.daysBetweenDates()),
+        },
+        {
+          type: 'area',
+          data: this.getRandomNumbersArray(this.daysBetweenDates()),
+        },
+      ]);
+    },
+    daysBetweenDates() {
+      const date1 = new Date(this.dates[0]);
+      const date2 = new Date(this.dates[1]);
+      const diffTime = Math.abs(date2 - date1);
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    },
+    getRandomNumbersArray(size) {
+      let array = new Array(size);
+      for (let i = 0; i < size; i++) {
+        array[i] = this.getRandomInt(100, 255);
+      }
+      return array;
+    },
+    getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    },
   },
 };
 </script>

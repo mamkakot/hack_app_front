@@ -49,7 +49,7 @@ export default {
       },
 
       {
-        name: 'Pahome',
+        name: 'Login',
         url: '/login',
         icon: 'mdi-account',
       },
