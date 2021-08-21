@@ -37,7 +37,7 @@
 </template>
 
 <script>
-export default {  
+export default {
   data: () => ({
     drawer: false,
     group: null,
@@ -45,15 +45,21 @@ export default {
       {
         name: 'Home',
         url: '/',
-        icon: 'mdi-home'
+        icon: 'mdi-home',
       },
 
       {
         name: 'Pahome',
         url: '/login',
-        icon: 'mdi-account'
-      }
-    ]
+        icon: 'mdi-account',
+      },
+
+      {
+        name: 'AppealForm',
+        url: '/appeal',
+        icon: 'mdi-account',
+      },
+    ],
   }),
 };
 </script>

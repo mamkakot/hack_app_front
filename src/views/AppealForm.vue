@@ -3,7 +3,6 @@
     <v-card-text>
       <v-select
         :items="users"
-        v-model="value"
         label="Кому"
         outlined
         dense

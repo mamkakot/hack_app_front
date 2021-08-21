@@ -18,6 +18,11 @@ const routes = [
     component: () => import('../views/Login.vue')
   },
   {
+    path: '/appeal',
+    name: 'AppealForm',
+    component: () => import('../views/AppealForm.vue')
+  },
+  {
     path: '/:catchAll(.*)',
     name: '404',
     component: () => import('../views/404.vue')
