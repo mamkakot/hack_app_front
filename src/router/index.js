@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
@@ -18,9 +17,14 @@ const routes = [
     component: () => import('../views/Login.vue')
   },
   {
-    path: '/appeal',
-    name: 'AppealForm',
-    component: () => import('../views/AppealForm.vue')
+    path: '/residents',
+    name: 'Residents',
+    component: () => import('../views/Residents.vue')
+  },
+  {
+    path: '/notifications',
+    name: 'Notifications',
+    component: () => import('../views/Notifications.vue')
   },
   {
     path: '/:catchAll(.*)',

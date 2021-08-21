@@ -3,12 +3,12 @@
     <v-app-bar app color="primary" dark>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-toolbar-title>ТРЕСКА</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
       <v-btn text>
-        <span class="mr-2">Pososi</span>
+        <span class="mr-2">Logout</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
@@ -43,20 +43,19 @@ export default {
     group: null,
     views: [
       {
-        name: 'Home',
+        name: 'Домашняя страница',
         url: '/',
         icon: 'mdi-home',
       },
 
       {
-        name: 'Pahome',
-        url: '/login',
+        name: 'Бизнесы',
+        url: '/residents',
         icon: 'mdi-account',
       },
-
       {
-        name: 'AppealForm',
-        url: '/appeal',
+        name: 'Оповещения',
+        url: '/notifications',
         icon: 'mdi-account',
       },
     ],

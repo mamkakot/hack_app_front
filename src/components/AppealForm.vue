@@ -1,13 +1,6 @@
 <template>
   <v-card class="mx-auto mt-5" width="520">
     <v-card-text>
-      <v-select
-        :items="users"
-        label="Кому"
-        outlined
-        dense
-        required
-      ></v-select>
       <v-text-field label="Тема" outlined dense required> </v-text-field>
       <v-textarea
         solo
@@ -26,7 +19,7 @@
           <v-btn color="success" @click="snackbar = true">Отправить</v-btn>
         </v-col>
         <v-col>
-          <v-btn color="error">Отмена</v-btn>
+          <v-btn color="error" @click="dialog = false">Отмена</v-btn>
         </v-col>
       </v-row>
       <v-snackbar v-model="snackbar" absolute>
@@ -47,8 +40,7 @@ export default {
   data: () => ({
     filled: false,
     snackbar: false,
-    text: `Отправлено`,
-    users: ['sas', 'ses', 'sos'],
+    text: `Отправлено`
   }),
   methods: {
     sendAppeal(msg) {
