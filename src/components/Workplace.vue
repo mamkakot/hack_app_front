@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="8">
-    <v-img height="228" :src="imageItem()"> </v-img>
+    <v-img height="322" :src="imageItem()"> </v-img>
     <v-card-title primary-title>
       {{ workplace.name }}
     </v-card-title>
