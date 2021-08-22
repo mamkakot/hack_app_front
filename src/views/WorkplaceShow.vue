@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row align="center">
-      <v-col cols="5">
+      <v-col cols="6">
         <v-card-title primary-title>
           <h1 class="display-1">{{ workplace.name }}</h1>
         </v-card-title>
@@ -19,7 +19,7 @@
         </v-card-text>
       </v-col>
       <v-spacer></v-spacer>
-      <v-col cols="6">
+      <v-col cols="5" class="mt-12">
         <v-img :src="imageItem()"> </v-img>
       </v-col>
     </v-row>

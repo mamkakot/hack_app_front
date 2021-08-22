@@ -72,16 +72,16 @@ export default {
       {
         id: 1,
         label: 'war-hole',
-        name: 'Попа Рт',
+        name: 'Зона муз. индустрии',
         image: 'wp1.webp',
-        averageAttendance: 32,
+        averageAttendance: 22,
         shortDescription:
           'Morbi mattis ullamcorper velit.Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.',
       },
       {
         id: 2,
         label: 'orange',
-        name: 'Под Вал',
+        name: 'Архитектура',
         image: 'wp2.jpg',
         averageAttendance: 15,
         shortDescription:
