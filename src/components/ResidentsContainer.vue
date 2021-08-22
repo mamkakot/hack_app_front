@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <ResidentCard
-      v-for="resident in residents"
-      :key="resident.id"
-      :resident="resident"
-      @updateresidents="fetchResidents"
-    />
-  </div>
+  <v-container>
+    <v-chip-group v-model="filterProps" column multiple>
+      <v-chip filter outlined v-for="chip in chips" :key="chip.id">
+        {{ chip.text }}
+      </v-chip>
+    </v-chip-group>
+    <div v-for="resident in residents" :key="resident.id">
+      <ResidentCard
+        v-if="filterProps.includes(resident.chip.id)"
+        :resident="resident"
+        @updateresidents="fetchResidents"
+      />
+    </div>
+  </v-container>
 </template>
 
 <script>
@@ -19,20 +25,21 @@ export default {
   },
   data() {
     return {
+      filterProps: [0, 1, 2],
       residents: [],
       chips: [
         {
-          id: 1,
+          id: 0,
           text: 'Музыка',
           color: 'red',
         },
         {
-          id: 2,
+          id: 1,
           text: 'Архитектура',
           color: 'purple',
         },
         {
-          id: 3,
+          id: 2,
           text: 'Живопись',
           color: 'green',
         },
@@ -61,9 +68,21 @@ export default {
         element['chip'] = this.chips[this.getRandomInt(0, 3)]
       })
     },
+
+    print() {
+      console.log(this.filterProps)
+    },
   },
   created() {
     this.fetchResidents()
+  },
+
+  computed: {
+    filterResidents() {
+      let arr = this.chips.map((i) => i.text)
+
+      return arr
+    },
   },
 }
 </script>
