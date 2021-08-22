@@ -3,7 +3,7 @@
     <v-app-bar app color="primary" dark>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>ТРЕСКА</v-toolbar-title>
+      <v-toolbar-title></v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -47,27 +47,31 @@ export default {
         url: '/',
         icon: 'mdi-home',
       },
-
       {
-        name: 'Бизнесы',
+        name: 'Резиденты',
         url: '/residents',
         icon: 'mdi-account',
       },
       {
         name: 'Оповещения',
         url: '/notifications',
-        icon: 'mdi-account',
+        icon: 'mdi-bell',
       },
       {
-        name: 'Dashboard',
+        name: 'Документы',
+        url: '/documents',
+        icon: 'mdi-file-document',
+      },
+      {
+        name: 'Статистика',
         url: '/dashboard',
-        icon: 'mdi-account',
+        icon: 'mdi-chart-line',
       },
 
       {
-        name: 'Workplaces',
+        name: 'Рабочие места',
         url: '/workplaces',
-        icon: 'mdi-account',
+        icon: 'mdi-shopping',
       },
       {
         name: 'Users',

@@ -4,7 +4,7 @@
       <v-sheet height="64">
         <v-toolbar flat>
           <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
-            Today
+            Сегодня
           </v-btn>
           <v-btn fab text small color="grey darken-2" @click="prev">
             <v-icon small>
@@ -31,16 +31,16 @@
             </template>
             <v-list>
               <v-list-item @click="type = 'day'">
-                <v-list-item-title>Day</v-list-item-title>
+                <v-list-item-title>День</v-list-item-title>
               </v-list-item>
               <v-list-item @click="type = 'week'">
-                <v-list-item-title>Week</v-list-item-title>
+                <v-list-item-title>Неделя</v-list-item-title>
               </v-list-item>
               <v-list-item @click="type = 'month'">
-                <v-list-item-title>Month</v-list-item-title>
+                <v-list-item-title>Месяц</v-list-item-title>
               </v-list-item>
               <v-list-item @click="type = '4day'">
-                <v-list-item-title>4 days</v-list-item-title>
+                <v-list-item-title>4 дня</v-list-item-title>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -72,26 +72,16 @@ export default {
     focus: "",
     type: "month",
     typeToLabel: {
-      month: "Month",
-      week: "Week",
-      day: "Day",
-      "4day": "4 Days",
+      month: "Месяц",
+      week: "Неделя",
+      day: "День",
+      "4day": "4 Дня",
     },
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
     events: [],
     colors: ["blue"],
-    names: [
-      "Meeting",
-      "Holiday",
-      "PTO",
-      "Travel",
-      "Event",
-      "Birthday",
-      "Conference",
-      "Party",
-    ],
   }),
   mounted() {
     this.$refs.calendar.checkChange();
@@ -108,7 +98,6 @@ export default {
             this.events[i].timed = true;
             this.events[i].start = new Date(this.events[i].start * 1000)
             this.events[i].end = new Date(this.events[i].end * 1000)
-            console.log(this.events[i])
           }
         })
         .catch((error) => {

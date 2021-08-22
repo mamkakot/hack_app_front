@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-container>
-      <v-row no-gutters style="height: 150px;" justify="center">
-        <v-col cols="8">
+      <v-row no-gutters style="height: 150px;" justify="left">
+        <v-col cols="10">
           <notification-container />
         </v-col>
       </v-row>
