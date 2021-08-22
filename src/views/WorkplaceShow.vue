@@ -6,7 +6,8 @@
           <h1 class="display-1">{{ workplace.name }}</h1>
         </v-card-title>
         <v-card-subtitle class="grey--text">
-          Средняя проходимость: {{ workplace.averageAttendance }} тыс. человек в год
+          Средняя проходимость: {{ workplace.averageAttendance }} тыс. человек в
+          год
         </v-card-subtitle>
         <v-card-text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -25,6 +26,13 @@
     </v-row>
     <v-row>
       <v-col>
+        <v-select
+          v-model="vselectValue"
+          @change="update()"
+          :items="items"
+          label="Тип графика"
+        ></v-select>
+
         <v-menu
           ref="menu"
           v-model="menu"
@@ -82,6 +90,8 @@ import VueApexCharts from 'vue-apexcharts'
 export default {
   data: function() {
     return {
+      vselectValue: 'Посещаемость',
+      items: ['Посещаемость', 'Прибыль'],
       dates: ['2021-06-12', '2021-07-12'],
       menu: false,
       chartOptions: {
@@ -95,6 +105,17 @@ export default {
         fill: {
           opacity: 1,
           type: 'solid',
+        },
+        xaxis: {
+          type: 'category',
+          tickPlacement: 'on',
+          labels: {
+            show: false,
+            hideOverlappingLabels: true,
+          },
+          title: {
+            text: 'Посещаемость',
+          },
         },
         plotOptions: {
           bar: {
@@ -132,6 +153,16 @@ export default {
     },
   },
   methods: {
+    update() {
+      this.$refs.chart.updateOptions({
+        xaxis: {
+          title: { text: this.vselectValue },
+        },
+      })
+      this.$refs.chart.updateSeries([
+        { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
+      ])
+    },
     imageItem() {
       return require(`@/assets/${this.workplace.image}`)
     },
@@ -151,6 +182,12 @@ export default {
     getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min) + min)
     },
+  },
+
+  mounted() {
+    this.$refs.chart.updateSeries([
+      { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
+    ])
   },
 }
 </script>
