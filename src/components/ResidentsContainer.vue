@@ -3,7 +3,7 @@
     <ResidentCard
     v-for="resident in residents"
     :key="resident.id"
-    :resident="resident"
+    :resident="resident"    
     @updateresidents="fetchResidents"
     />
   </div>

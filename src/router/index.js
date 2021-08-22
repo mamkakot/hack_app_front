@@ -47,17 +47,11 @@ const routes = [
     props: true,
     component: () => import('../views/WorkplaceShow.vue'),
   },
-
   {
-    path: '/users',
-    name: 'UserList',
-    component: () => import('../views/UserList.vue'),
-  },
-  {
-    path: '/user/:username?',
-    name: 'User',
+    path: '/resident/:username?',
+    name: 'Resident',
     props: true,
-    component: () => import('../views/User.vue'),
+    component: () => import('../views/Resident.vue'),
   },
   {
     path: '/:catchAll(.*)',

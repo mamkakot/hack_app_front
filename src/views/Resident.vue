@@ -7,7 +7,7 @@
         <v-card flat>
           <v-img src="@/assets/logo1.jpeg"></v-img>
           <v-card-title primary-title>
-            {{ user.username }}
+            Title
           </v-card-title>
           <v-subheader class="grey--text">Направления работы:</v-subheader>
 

@@ -45,7 +45,7 @@ export default {
     return apiClient.post('/api/checks', check)
   },
   getNotifications(user) {
-    return apiClient.get('/api/notifications?user=' + user)
+    return apiClient.get('/api/notifications?receiver=' + user)
   },
   createNotification(notification) {
     return apiClient.post('/api/notifications', notification)

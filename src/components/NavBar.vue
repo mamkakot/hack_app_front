@@ -72,12 +72,7 @@ export default {
         name: 'Рабочие места',
         url: '/workplaces',
         icon: 'mdi-shopping',
-      },
-      {
-        name: 'Users',
-        url: '/users',
-        icon: 'mdi-account',
-      },
+      }
     ],
   }),
 };
