@@ -62,12 +62,11 @@ export default {
         url: '/documents',
         icon: 'mdi-file-document',
       },
-      {
-        name: 'Статистика',
-        url: '/dashboard',
-        icon: 'mdi-chart-line',
-      },
-
+      // {
+      //   name: 'Статистика',
+      //   url: '/dashboard',
+      //   icon: 'mdi-chart-line',
+      // },
       {
         name: 'Рабочие места',
         url: '/workplaces',
