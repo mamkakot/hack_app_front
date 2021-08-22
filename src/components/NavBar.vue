@@ -69,6 +69,11 @@ export default {
         url: '/workplaces',
         icon: 'mdi-account',
       },
+      {
+        name: 'Users',
+        url: '/users',
+        icon: 'mdi-account',
+      },
     ],
   }),
 };

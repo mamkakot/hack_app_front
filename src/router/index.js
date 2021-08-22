@@ -19,12 +19,12 @@ const routes = [
   {
     path: '/residents',
     name: 'Residents',
-    component: () => import('../views/Residents.vue')
+    component: () => import('../views/Residents.vue'),
   },
   {
     path: '/notifications',
     name: 'Notifications',
-    component: () => import('../views/Notifications.vue')
+    component: () => import('../views/Notifications.vue'),
   },
   {
     path: '/dashboard',
@@ -37,25 +37,43 @@ const routes = [
     component: () => import('../views/WorkplacesList.vue'),
   },
   {
+    path: '/workplace/:label?',
+    name: 'WorkplaceShow',
+    props: true,
+    component: () => import('../views/WorkplaceShow.vue'),
+  },
+
+  {
+    path: '/users',
+    name: 'UserList',
+    component: () => import('../views/UserList.vue'),
+  },
+  {
+    path: '/user/:username?',
+    name: 'User',
+    props: true,
+    component: () => import('../views/User.vue'),
+  },
+  {
     path: '/:catchAll(.*)',
     name: '404',
     component: () => import('../views/404.vue'),
   },
-];
+]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
-});
+})
 
-export default router;
+export default router
 
 router.beforeEach((routeTo, routeFrom, next) => {
-  NProgress.start();
-  next();
-});
+  NProgress.start()
+  next()
+})
 
 router.afterEach(() => {
-  NProgress.done();
-});
+  NProgress.done()
+})

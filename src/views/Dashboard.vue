@@ -31,8 +31,8 @@
               text
               color="primary"
               @click="
-                updateCharts();
-                $refs.menu.save(dates);
+                updateCharts()
+                $refs.menu.save(dates)
               "
             >
               OK
@@ -126,7 +126,7 @@
 </template>
 
 <script>
-import VueApexCharts from 'vue-apexcharts';
+import VueApexCharts from 'vue-apexcharts'
 
 export default {
   name: 'Chart',
@@ -176,24 +176,24 @@ export default {
           data: [],
         },
       ],
-    };
+    }
   },
   computed: {
     dateRangeText() {
-      return this.dates.join(' ~ ');
+      return this.dates.join(' ~ ')
     },
   },
   methods: {
     updateCharts() {
       this.$refs.chart.updateSeries([
         { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
-      ]);
+      ])
       this.$refs.chart2.updateSeries([
         { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
-      ]);
+      ])
       this.$refs.chart3.updateSeries([
         { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
-      ]);
+      ])
       this.$refs.chart4.updateSeries([
         {
           type: 'line',
@@ -203,13 +203,13 @@ export default {
           type: 'bar',
           data: this.getRandomNumbersArray(this.daysBetweenDates()),
         },
-      ]);
+      ])
       this.$refs.chart5.updateSeries([
         { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
-      ]);
+      ])
       this.$refs.chart6.updateSeries([
         { data: this.getRandomNumbersArray(this.daysBetweenDates()) },
-      ]);
+      ])
       this.$refs.chart7.updateSeries([
         {
           data: [
@@ -221,7 +221,7 @@ export default {
             this.getRandomNumbersArray(this.daysBetweenDates()),
           ],
         },
-      ]);
+      ])
       this.$refs.chart8.updateSeries([
         {
           type: 'line',
@@ -235,26 +235,26 @@ export default {
           type: 'area',
           data: this.getRandomNumbersArray(this.daysBetweenDates()),
         },
-      ]);
+      ])
     },
     daysBetweenDates() {
-      const date1 = new Date(this.dates[0]);
-      const date2 = new Date(this.dates[1]);
-      const diffTime = Math.abs(date2 - date1);
-      return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const date1 = new Date(this.dates[0])
+      const date2 = new Date(this.dates[1])
+      const diffTime = Math.abs(date2 - date1)
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24))
     },
     getRandomNumbersArray(size) {
-      let array = new Array(size);
+      let array = new Array(size)
       for (let i = 0; i < size; i++) {
-        array[i] = this.getRandomInt(100, 255);
+        array[i] = this.getRandomInt(100, 255)
       }
-      return array;
+      return array
     },
     getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min) + min);
+      return Math.floor(Math.random() * (max - min) + min)
     },
   },
-};
+}
 </script>
 
 <style scoped></style>

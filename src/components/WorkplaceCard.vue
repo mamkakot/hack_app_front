@@ -1,5 +1,11 @@
 <template>
-  <v-card elevation="8">
+  <v-card
+    elevation="8"
+    :to="{
+      name: 'WorkplaceShow',
+      params: { label: workplace.label, workplace: workplace },
+    }"
+  >
     <v-img height="322" :src="imageItem()"> </v-img>
     <v-card-title primary-title>
       {{ workplace.name }}
@@ -16,13 +22,13 @@
 export default {
   methods: {
     imageItem() {
-      return require(`@/assets/${this.workplace.image}`);
+      return require(`@/assets/${this.workplace.image}`)
     },
   },
   props: {
     workplace: Object,
   },
-};
+}
 </script>
 
 <style lang="scss" scoped></style>
