@@ -6,7 +6,7 @@
           <events-calendar @getEvent="getEvent"/>
         </v-col>
         <v-col cols="6">
-          <v-card v-bind="attrs" v-on="on" elevation="7" class="justify-center eventCard">
+          <v-card elevation="7" class="justify-center eventCard">
             <v-card-title primary-title>
               {{ event.name }}
             </v-card-title>

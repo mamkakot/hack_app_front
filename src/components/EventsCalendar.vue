@@ -88,6 +88,8 @@ export default {
   },
   methods: {
     fetchEvents({start, end}) {
+      console.log(start)
+      console.log(end)
       EventService.getEvents(start.date, end.date)
         .then((response) => {          
           this.events = response.data;
