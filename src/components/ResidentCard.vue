@@ -12,6 +12,14 @@
       {{ resident.name }}
     </v-card-title>
 
+    <v-chip
+      class="mx-3"
+      :color="resident.chip.color"
+      text-color="white"
+    >
+      {{ resident.chip.text }}
+    </v-chip>
+
     <v-card-text>
       <div>Почта: {{ resident.email }}</div>
       <div>Телефон: {{ resident.phone }}</div>
@@ -20,7 +28,7 @@
 </template>
 
 <script>
-import EventService from "@/services/EventService";
+import EventService from '@/services/EventService'
 
 export default {
   data: () => ({
@@ -28,11 +36,11 @@ export default {
     filled: false,
     snackbar: false,
     text: `Отправлено`,
-    types: ["Оповещение", "Чек"],
-    type: "Оповещение",
+    types: ['Оповещение', 'Чек'],
+    type: 'Оповещение',
     notification: {
-      title: "",
-      description: "",
+      title: '',
+      description: '',
       payment: 0,
       receiver: 1,
       sender: 0,
@@ -41,26 +49,26 @@ export default {
   methods: {
     handle() {},
     sendAppeal() {
-      this.snackbar = true;
-      this.notification.receiver = this.resident.id;
-      this.notification.payment = parseInt(this.notification.payment);
-      console.log(this.notification);
-      if (this.type == "Чек") {
+      this.snackbar = true
+      this.notification.receiver = this.resident.id
+      this.notification.payment = parseInt(this.notification.payment)
+      console.log(this.notification)
+      if (this.type == 'Чек') {
         EventService.createCheck(this.notification)
           .then((response) => {
-            console.log(response.data);
+            console.log(response.data)
           })
           .catch((error) => {
-            console.log("There was an error: ", error.response);
-          });
+            console.log('There was an error: ', error.response)
+          })
       } else {
         EventService.createNotification(this.notification)
           .then((response) => {
-            console.log(response.data);
+            console.log(response.data)
           })
           .catch((error) => {
-            console.log("There was an error: ", error.response);
-          });
+            console.log('There was an error: ', error.response)
+          })
       }
     },
     route() {},
@@ -69,7 +77,7 @@ export default {
     resident: Object,
   },
   components: {},
-};
+}
 </script>
 
 <style scoped>

@@ -13,12 +13,10 @@
 
           <v-chip
             class="mx-3"
-            v-for="chip in chips"
-            :key="chip.id"
-            :color="chip.color"
+            :color="resident.chip.color"
             text-color="white"
           >
-            {{ chip.text }}
+            {{ resident.chip.text }}
           </v-chip>
           <v-divider class="my-4"></v-divider>
           <v-card-text>
