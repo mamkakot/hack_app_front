@@ -4,14 +4,13 @@
       <v-row>
         <template v-for="(workplace, index) in workplaces">
           <v-responsive
-            v-if="index % 2 == 0"
+            v-if="$vuetify.breakpoint.xs || index % 2 == 0"
             :key="`width-${index}`"
             width="100%"
           ></v-responsive>
           <v-col :key="workplace.id" cols="6">
             <WorkplaceCard :workplace="workplace" />
           </v-col>
-          <v-spacer v-if="index % 2 == 0" :key="`spacer1-${index}`"></v-spacer>
         </template>
       </v-row>
     </v-container>
