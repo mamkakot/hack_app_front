@@ -27,7 +27,7 @@
       </v-card-text>
 
       <hr v-if="response" />
-      <AppealForm v-if="response" class="form"/>
+      <AppealForm :not="notification" v-if="response" class="form"/>
 
       <v-divider></v-divider>
 

@@ -7,7 +7,7 @@
         hint="Ответ"
         outlined
         required
-        v-model="notification.descriptions"
+        v-model="notification.description"
       ></v-textarea>
       <v-row align="center">
         <v-col>
@@ -37,6 +37,7 @@ import EventService from "@/services/EventService";
 
 export default {
   props: {
+    not: Object    
   },
   data: () => ({
     filled: false,
@@ -45,14 +46,14 @@ export default {
     notification: {
       title: "",
       description: "",
-      receiver: 1,
-      sender: 0,
+      receiver: 2,
+      sender: 1,
     },
   }),
   methods: {
     sendAppeal() {
-      this.snackbar = true;
-      this.notification.receiver
+      this.snackbar = true
+      this.notification.title = this.not.title
       EventService.createNotification(this.notification)
         .then((response) => {
           console.log(response.data);
