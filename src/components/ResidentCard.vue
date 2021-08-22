@@ -2,7 +2,7 @@
   <v-card
     :to="{
       name: 'Resident',
-      params: { username: resident.name, user: resident },
+      params: { username: resident.name, resident: resident },
     }"
     elevation="7"
     class="justify-center card"

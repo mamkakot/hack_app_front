@@ -23,11 +23,11 @@ export default {
   getUsers() {
     return apiClient.get('/api/users')
   },
-  getUser(token) {
-    return apiClient.get('/api/user?token=' + token)
+  getUser(username) {
+    return apiClient.get('/api/user/' + username)
   },
   getEvents(from, to) {
-    return apiClient.get('/api/events?from=' + from + '&to' + to)
+    return apiClient.get('/api/events?from=' + from + '&to=' + to)
   },
   getEvent(id) {
     return apiClient.get('/api/event/' + id)

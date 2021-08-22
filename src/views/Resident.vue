@@ -7,7 +7,7 @@
         <v-card flat>
           <v-img src="@/assets/logo1.jpeg"></v-img>
           <v-card-title primary-title>
-            Title
+            {{ resident.name }}
           </v-card-title>
           <v-subheader class="grey--text">Направления работы:</v-subheader>
 
@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import EventService from '@/services/EventService'
+
 import WorkplaceCard from '@/components/WorkplaceCard.vue'
 export default {
   data: () => ({
@@ -93,8 +95,23 @@ export default {
     WorkplaceCard,
   },
   props: {
-    user: Object,
+    username: String,
+    resident: Object,
   },
+  methods: {
+    fetchUser() {
+      EventService.getUser(this.username)
+      .then((response) => {
+        this.resident = response.data;
+      })
+      .catch((error) => {
+        console.log("There was an error: ", error.response);
+      });
+    }
+  },
+  created() {
+    this.fetchUser()
+  }
 }
 </script>
 
