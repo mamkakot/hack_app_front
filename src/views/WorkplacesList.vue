@@ -27,7 +27,7 @@ export default {
         {
           id: 1,
           label: 'war-hole',
-          name: 'Попа Рт',
+          name: 'Зона муз. индустрии',
           image: 'wp1.webp',
           averageAttendance: this.getRandomInt(15, 32),
           shortDescription:
@@ -36,7 +36,7 @@ export default {
         {
           id: 2,
           label: 'orange',
-          name: 'Под Вал',
+          name: 'Архитектура',
           image: 'wp2.jpg',
           averageAttendance: this.getRandomInt(15, 32),
           shortDescription:
@@ -45,7 +45,7 @@ export default {
         {
           id: 12,
           label: 'stairs',
-          name: 'Лест Ница',
+          name: 'Зона IT –индустрий',
           image: 'wp3.jpg',
           averageAttendance: this.getRandomInt(15, 32),
           shortDescription:
@@ -54,7 +54,7 @@ export default {
         {
           id: 4,
           label: 'timetowork',
-          name: 'Ма Кбук',
+          name: 'Коворкинг',
           image: 'wp4.jpg',
           averageAttendance: this.getRandomInt(15, 32),
           shortDescription:
@@ -63,7 +63,7 @@ export default {
         {
           id: 5,
           label: 'cubes',
-          name: '(кофей)Ку Бы',
+          name: 'Дизайн интерьеров',
           image: 'wp5.jpg',
           averageAttendance: this.getRandomInt(15, 32),
           shortDescription:
@@ -72,7 +72,7 @@ export default {
         {
           id: 6,
           label: 'cillinders',
-          name: 'Столики в КФС',
+          name: 'Зона ремесленничества',
           image: 'wp6.jpg',
           averageAttendance: this.getRandomInt(15, 32),
           shortDescription:
